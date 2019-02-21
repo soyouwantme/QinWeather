@@ -6,7 +6,6 @@ import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.graphics.Color;
 import android.net.Uri;
-import android.os.Build;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -57,7 +56,6 @@ public class MainActivity extends AppCompatActivity implements WeatherFragment.O
         Log.d("tude","setContentView(R.layout.activity_main)");
         setContentView(R.layout.activity_main);
         Log.d("tude","setContentView(R.layout.activity_main)");
-
     }
 
     public void requestLocation(){
@@ -88,9 +86,9 @@ public class MainActivity extends AppCompatActivity implements WeatherFragment.O
         public void onReceiveLocation(BDLocation location){
             Log.d("tude","onReceiveLocation(BDLocation location)");
             double latitude = location.getLatitude();    //获取纬度信息
-            //Log.d("latitude",latitude+"");
+            Log.d("latitude",latitude+"");
             double longitude = location.getLongitude();    //获取经度信息
-            //Log.d("longitude",longitude+"");
+            Log.d("longitude",longitude+"");
             String cityName = location.getDistrict();
             Log.d("citytude",cityName+"");
             SharedPreferences.Editor editor = getSharedPreferences("position_data", Context.MODE_PRIVATE).edit();
@@ -103,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements WeatherFragment.O
 
     @Override
     public void onRequestPermissionsResult(int requestCode, String[] permissions, int[] grantResults) {
+        Log.d("Activitude","onRequestPermissionsResult");
         switch (requestCode){
             case 1:
                 if (grantResults.length > 0){

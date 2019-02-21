@@ -15,6 +15,7 @@ import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.HorizontalScrollView;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.ScrollView;
@@ -90,8 +91,11 @@ public class WeatherFragment extends Fragment {
         String weatherStringNow = prefs.getString("StringNow", null);
         String weatherStringDay = prefs.getString("StringDay", null);
         String weatherStringWeek = prefs.getString("StringWeek", null);
-
-        SharedPreferences position = getActivity().getSharedPreferences("position_data",Context.MODE_PRIVATE);
+        SharedPreferences position = null;
+        while (position == null) {
+            position = getActivity().getSharedPreferences("position_data", Context.MODE_PRIVATE);
+            Log.d("tude","getPosition");
+        }
         String latitude = position.getString("latitude","");
         String longitude = position.getString("longitude","");
         String cityName = position.getString("cityName","NULL");
@@ -113,6 +117,7 @@ public class WeatherFragment extends Fragment {
                 requestWeather(existAddress);
             }
         });
+        Log.d("fragmentude","oncreate()end");
         return view;
     }
 

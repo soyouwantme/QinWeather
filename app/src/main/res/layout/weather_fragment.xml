@@ -33,11 +33,25 @@
 
                     <include layout="@layout/title"/>
 
+
                     <include layout="@layout/now1" />
 
                     <include layout="@layout/now2"/>
 
                     <include layout="@layout/forecast_bar"/>
+
+                    <HorizontalScrollView
+                        android:id="@+id/forecast_day_layout"
+                        android:layout_width="match_parent"
+                        android:layout_height="150dp"
+                        android:fillViewport="true"
+                        android:scrollbars="none">
+
+                        <com.kk.qinweather.MyView
+                            android:layout_width="800dp"
+                            android:layout_height="150dp"/>
+
+                    </HorizontalScrollView>
 
                     <LinearLayout
                         android:id="@+id/forecast_layout"
